@@ -1,0 +1,204 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+    int data;
+    struct node *link;
+};
+
+struct node *temp,*head,*newnode;
+
+void create()
+{
+    int choice;
+    while(choice){
+        struct node *newnode=(struct node*)malloc(sizeof(struct node));
+        printf("enter data");
+        scanf("%d",&newnode->data);
+        if(head==NULL)
+            head=temp=newnode;
+        else{
+            temp->link=newnode;
+            temp=newnode;
+        }
+        printf("do you want to continue(0,1)?");
+        scanf("%d",&choice);
+    }
+    printf("\n");
+}
+
+void insertbegin(int data)
+{
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=data;
+    newnode->link=head;
+    head=newnode;
+}
+
+void insertend(int data)
+{
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=data;
+    newnode->link=NULL;
+    if(head==NULL)
+    {
+        head=newnode;
+    }
+    else{
+        temp=head;
+        while(temp->link != NULL){
+            temp=temp->link;
+        }
+        temp->link=newnode;
+    }
+}
+
+void insertpos(int pos,int data){
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    struct node *temp=head;
+    newnode->data=data;
+    pos--;
+    for(int i=1;i<pos;i++){
+        temp=temp->link;
+    }
+    newnode->link=temp->link;
+    temp->link=newnode;
+    
+    
+}
+
+void deletestart(){
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    if(head==NULL){
+        printf("list is empty");
+    }
+    else{
+        head=head->link;
+        free(newnode);
+    }
+}
+
+void deletend()
+{
+    struct node *temp=head;
+    struct node *temp1;
+    while(temp->link != NULL){
+        temp1=temp;
+        temp=temp->link;
+    }
+    temp1->link=NULL;
+}
+
+void deletepos(int pos)
+{
+    struct node *temp=head;
+    struct node *temp1;
+    pos--;
+    for(int i=1;i<pos;i++){
+        temp=temp->link;
+    }
+    temp1=temp->link;
+    temp->link=temp1->link;
+    temp1->link=NULL;
+    free(temp1);
+    
+    
+}
+
+void removeDuplicate() {  
+    //Node current will point to head  
+    struct node *current = head, *index = NULL, *temp = NULL;  
+      
+    if(head == NULL) {  
+        return;  
+    }  
+    else {  
+        while(current != NULL){  
+            //Node temp will point to previous node to index.  
+            temp = current;  
+            //Index will point to node next to current  
+            index = current->link;  
+              
+            while(index != NULL) {  
+                //If current node's data is equal to index node's data  
+                if(current->data == index->data) {  
+                    //Here, index node is pointing to the node which is duplicate of current node  
+                    //Skips the duplicate node by pointing to next node  
+                    temp->link = index->link;  
+                }  
+                else {  
+                    //Temp will point to previous node of index.  
+                    temp = index;  
+                }  
+                index = index->link;  
+            }  
+            current = current->link;  
+        }          
+    }  
+}  
+
+void  reverse()
+{
+    struct node *curr,*prev, *next;
+    prev=NULL;
+    curr=next=head;
+    while(next != NULL){
+        next=next->link;
+        curr->link=prev;
+        prev=curr;
+        curr=next;
+    }
+    head=prev;
+}
+
+int length()
+{
+    int count=0;
+    temp=head;
+    while(temp != NULL){
+        count++;
+        temp=temp->link;
+    }
+    printf("length of linkedlist %d\n",count);
+}
+
+int print()
+{
+    temp=head;
+    if(head==NULL){
+        printf("linkedlist is empty\n");
+    }
+    else{
+        while(temp!=NULL){
+            printf("%d->",temp->data);
+            temp=temp->link;
+        }
+    }
+    printf("NULL\n");
+}
+
+
+int main()
+{
+    printf("linkedlist creation\n");
+    create();
+    print();
+    reverse();
+    print();
+    length();
+    insertbegin(7);
+    print();
+    insertend(8);
+    print();
+    insertpos(2,6);
+    print();
+    deletestart();
+    print();
+    deletend();
+    print();
+    deletepos(3);
+    
+    removeDuplicate();
+    print();
+    return 0;
+}

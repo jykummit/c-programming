@@ -1,0 +1,563 @@
+POINTERS:
+
+1.pointer: A pointer is a variable that stores the memory address of another variable. 
+	It is declared along with an asterisk symbol (*). The syntax to declare a pointer is as follows:
+
+         datatype *var1
+
+--->What Are the Different Types of Pointers?
+There are majorly four types of pointers, they are:
+
+Null Pointer
+Void Pointer
+Wild Pointer
+Dangling Pointer 
+
+1.NULL pointer:
+
+If you assign a NULL value to a pointer during its declaration, it is called Null Pointer.
+
+Syntax:
+
+Int *var = NULL;
+
+Example:
+#include<stdio.h>
+
+int main()
+
+{
+
+int *var = NULL;
+
+printf(“var=%d”,*var);
+
+}
+
+output:segmentation fault
+
+2.void pointer:
+
+When a pointer is declared with a void keyword, then it is called a void pointer. To print the value of this pointer, you need to typecast it.
+
+Syntax:
+
+void *var;
+
+Example:
+#include<stdio.h>
+
+int main()
+
+{
+
+     int a=2;
+
+     void *ptr;
+
+ptr= &a;
+
+printf("After Typecasting, a = %d", *(int *)ptr);
+
+     return 0;
+
+}
+
+output: after typecasting a=2.
+
+3.wild pointer:
+
+A wild pointer is only declared but not assigned an address of any variable. They are very tricky, and they may cause segmentation errors.
+
+Example:
+#include<stdio.h>
+
+int main()
+
+{
+
+  int *ptr;
+
+  printf(“ptr=%d”,*ptr);
+
+  return 0;
+
+}
+
+output:segmentation fault
+
+4.dangling pointer:
+
+Suppose there is a pointer p pointing at a variable at memory 1004. If you deallocate this memory, then this p is called a dangling pointer.
+You can deallocate a memory using a free() function.
+
+Example:
+#include<stdio.h>
+
+#include<stdlib.h>
+
+int main()
+
+{
+
+  int *ptr=(int *)malloc(sizeof(int));
+
+  int a=5;
+
+  ptr=&a;
+
+  free(ptr);
+
+  //now this ptr is known as dangling pointer.
+
+printf(“After deallocating its memory *ptr=%d”,*ptr);
+
+  return 0;
+
+}
+
+--->What Are the Use Cases of Pointers in C?
+1.Pointer arithmetic
+2.Pointer to pointer
+3.Array of pointers
+4.Call by value
+5.Call by reference
+
+1.Pointer arithmetic: Increment: You can use this operator to jump from one index to the next index in an array.
+Syntax:
+
+           ptr++;
+
+#include <stdio.h>
+
+int main() {
+
+  int arr[3] = {50, 150, 200};
+
+  int *ptr;
+
+  ptr = arr;
+
+  for (int i = 0; i < 3; i++)
+
+  {
+
+       printf(“Value of *ptr = %d\n”,*ptr);
+
+       printf(“Address of *ptr = %d\n”,ptr);
+
+       ptr++; 
+
+  } 
+
+pointers_in_c-pointer-arithmetic-increment-img2
+
+Decrement: You can use this operator to jump from one index to the previous index in an array.
+Syntax:
+
+              Ptr--;
+
+arithmetic-decrement-img
+
+Example:
+#include<stdio.h>
+
+int main()
+
+{
+
+int arr[3]={50, 150, 200};
+
+int *ptr;
+
+ptr = &arr[2];
+
+for (int i=0;i<3;i++)
+
+{
+
+printf("Value of *ptr = %d\n", *ptr);
+
+printf("Address of *ptr = %d\n\n", ptr);
+
+ptr--; 
+
+}
+
+}
+
+arithmetic-decrement-img2
+
+Integers added to a Pointer: You can use this operator to jump from one index to the next ith index in an array.
+Syntax:
+
+ptr+=i; // where ‘i’ is an integer
+
+pointers_in_c-pointer-arithmetic-addition-img1
+
+Example:
+                 #include <stdio.h>
+
+int main() {
+
+int arr[5] = {10, 100, 200, 300, 500};
+
+int *ptr;
+
+ptr = &arr[0];
+
+for (int i = 0; i < 5; i++) {
+
+printf("Value of *ptr = %d\n", *ptr);
+
+printf("Address of *ptr = %d\n\n", ptr);
+
+ptr=ptr+2;
+
+}
+
+}
+
+pointers_in_c-pointer-arithmetic-addition-img2
+
+Integers Subtracted from a Pointer: You can use this operator to jump from one index to the previous ith index in an array.
+Syntax:
+
+              ptr-=i; // where ‘i’ is an integer
+
+pointers_in_c-pointer-arithmetic-subtraction-img1
+
+Example:
+#include <stdio.h>
+
+int main() {
+
+int arr[5] = {10, 100, 200, 300, 500};
+
+int *ptr;
+
+ptr = &arr[4];
+
+for (int i = 0; i<5; i++)
+
+{
+
+printf("Value of *ptr = %d\n", *ptr);
+
+printf("address of *ptr = %d\n\n", ptr);
+
+ptr-=2; 
+
+}
+
+}
+
+pointers_in_c-pointer-arithmetic-subtraction-img2
+
+Precedence:
+Operators * and & are given the same priorities as unary operators (increment++, decrement--).
+The unary operators *, &, ++, - are evaluated from right to left in the same expression.
+If a P points to an X variable, then you can interchange X with *P.
+Expression
+
+Equivalent Expression
+
+Y=X+1
+
+Y=*P+1
+
+X=X+10
+
+*P=*P+10
+
+X+=2
+
+*P+=2
+
+++X
+
+++*P
+
+X++
+
+(*P)++
+
+Pointer to Pointer: 
+pointers_in_c-pointer-to-pointer-img1
+
+In this situation, a pointer will indirectly point to a variable via another pointer.
+
+Syntax:
+
+Int **ptr;
+
+Example:
+#include <stdio.h>
+
+int main ()
+
+{
+
+int var, *ptr1, **ptr2;
+
+var = 10;
+
+ptr1 = &var;
+
+ptr2 = &ptr1;
+
+printf("Value of var = %d\n", var );
+
+printf("Value available at *ptr1 = %d\n", *ptr1 );
+
+printf("Value available at **ptr2 = %d\n", **ptr2);
+
+return 0;
+
+}
+
+pointers_in_c-pointer-to-pointer-img2
+
+An Array of Pointer: 
+An array of the pointer is an array whose every element is a pointer.
+
+Syntax:
+
+int *arr[n] //where n is size of array.
+
+pointers_in_c-Array-of-pointer-img1
+
+Example:
+#include <stdio.h>
+
+int main ()
+
+{
+
+int a[3] = {10, 100, 200},n=3;
+
+int i, *ptr[3];
+
+for ( i = 0; i < 3; i++)
+
+{
+
+  ptr[i] = &a[i];
+
+}
+
+for ( i = 0; i < n; i++)
+
+{
+
+  printf("Value of a[%d] = %d\n", i, *ptr[i] );
+
+}
+
+return 0;
+
+}
+
+pointers_in_c-Array-of-pointer-img2
+
+Call By Value: 
+In ‘call by value’, you must copy the variable's values and pass them in the function call as a parameter. If you modify these parameters, then it doesn't change the value of the actual variable. 
+
+pointers_in_c-call-by-value-img1
+
+Example:
+#include<stdio.h>  
+
+void change(int num)
+
+{
+
+printf("Before adding value inside function num=%d\n",num);
+
+num=num+100;
+
+printf("After adding value inside function num=%d\n",num);
+
+}
+
+int main()
+
+{
+
+int x=100;
+
+printf("Before function call x=%d \n",x);
+
+change(x);
+
+printf("After function call x=%d \n",x);
+
+return 0;
+
+}
+
+pointers_in_c-call-by-value-img2.
+
+Call By Reference: 
+In call by reference, you must take the variable's address and pass it in the function call as a parameter. If you modify these parameters, then it will change the value of the actual variable as well. 
+
+pointers_in_c-call-by-reference-img1
+
+Example:
+#include<stdio.h>
+
+void change(int *num)
+
+{
+
+printf("Before adding value inside function num=%d \n",*num);
+
+(*num) += 100;
+
+printf("After adding value inside function num=%d \n",*num);
+
+}
+
+int main()
+
+{
+
+  int x=100;
+
+  printf("Before function call x=%d \n",x);
+
+  change(&x);//passing reference in function    
+
+  printf("After function call x=%d \n",x);
+
+  return 0;
+
+}
+
+pointers_in_c-call-by-reference-img2
+
+Stand Out From Your Peers this Appraisal Season
+Start Learning With Our FREE CoursesENROLL NOWStand Out From Your Peers this Appraisal Season
+What Are the Advantages of Pointers in C?
+pointers_in_c-advantages-img1
+
+Pointers in C programming are helpful to access a memory location
+Pointers are an effective way to access the array structure elements
+Pointers are used for the allocation of dynamic memory and the distribution
+Pointers are used to build complicated data structures like a linked list, graph, tree, etc
+What Are the Disadvantages of Pointers?
+pointers_in_c-disadvantages-img1
+
+Pointers are a bit difficult to understand
+Pointers can cause several errors, such as segmentation errors or unrequired memory access
+If a pointer has an incorrect value, it may corrupt the memory
+Pointers may also cause memory leakage
+The pointers are relatively slower than the variables
+What Are the Key Takeaways?
+The Pointers in C programming is simply a storage location for data in memory
+Pointers can be used to traverse the array more efficiently
+You can use function pointers to invoke a function dynamically
+Pointer arithmetic is the process of performing arithmetic operations on a pointer
+In an array of pointers, pointers can point to functions, making it simple to call different functions
+Are you a web developer or interested in building a website? Enroll for the Full Stack Web Developer - MEAN Stack Master's Program. Explore the course preview!
+Next Steps
+"Arrays in Data structures" can be your next stop. Arrays in data structures can be helpful in competitive programming and other data structure implementations. 
+Arrays allocate memory in contiguous memory locations for all its elements making it easier to access elements. 
+
+
+--->Double pointer:
+The first pointer is used to store the address of the second pointer. Thus it is known as double pointers.
+syntax: int **ptr;  
+
+---> Function pointer:
+Function Pointers point to code like normal pointers.
+
+In Functions Pointers, function’s name can be used to get function’s address.
+
+A function can also be passed as an arguments and can be returned from a function.
+
+Declaration
+function_return_type(*Pointer_name)(function argument list)
+
+A pointer pointing to the address of a function is called function pointer. A function pointer in C can be used to create function calls to the function they point to just like a normal function.
+
+
+Syntax of function pointer: return type (*ptr_name)(type1, type2…);
+
+Example:
+#include <stdio.h>  
+int add(int,int);  
+int main()  
+{  
+   int a,b;  
+   int (*ip)(int,int);  
+   int result;  
+   printf("Enter the values of a and b : ");  
+   scanf("%d %d",&a,&b);  
+   ip=add;  
+   result=(*ip)(a,b);  
+   printf("Value after addition is : %d",result);  
+    return 0;  
+}  
+int add(int a,int b)  
+{  
+    int c=a+b;  
+    return c;  
+}  
+
+
+
+POINTER TO CONSTANT:
+As the name itself indicates, the value of the variable to which the pointer is pointing, is constant. In other words, a pointer through which one cannot change the value of the variable to which it points is known as a pointer to constant.
+
+Note: These pointers can change the address they point to but cannot change the value at the address they are pointing to.
+
+syntax:const<type of pointer>*<pointer name>==== const int* ptr
+or <type of pointer>const*<pointer name>===int const* ptr
+
+Example:
+ #include <stdio.h>
+2
+3 int main()
+4 {
+5 //Definition of the variable
+6 int a = 10;
+7
+8 //Definition of pointer to constant
+9 const int* ptr = &a; //Now, ptr is pointing to the value of the variable a
+10
+11 *ptr = 30; //Error: Since the value is constant
+12
+13 return 0;
+14 }
+
+output:error
+
+CONSTANT POINTER:
+A constant pointer is one that cannot change the address it contains. In other words, we can say that once a constant pointer points to a variable, it cannot point to any other variable.
+
+Note: However, these pointers can change the value of the variable they point to but cannot change the address they are holding.
+
+syntax:<type of pointer>*const<pointer name> ==== int* const ptr
+*********** here value may change but address is not possible to change.
+
+Example:
+1 #include <stdio.h>
+2
+3 int main()
+4 {
+5 //Definition of the variable
+6 int a = 10;
+7 int b = 20;
+8
+9 //Definition of pointer to constant
+10 const int* ptr = &a;//Now, ptr is pointing to the value of the variable a
+11
+12 *ptr = 30; // Works,since the pointer pointing to the value is not constant
+13
+14 ptr = &b; //Error:Now, ptr is pointing to the value of the variable b
+15
+16 return 0;
+17
+18 }
+

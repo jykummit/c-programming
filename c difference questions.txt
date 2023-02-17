@@ -1,0 +1,12 @@
+1.Differentiate between the macros and the functions.
+The differences between macros and functions can be explained as follows:
+
+Macros	                                              Functions
+1.It is preprocessed rather than compiled.	1.It is compiled not preprocessed.
+2.It is preprocessed rather than compiled.	2.Function checks for compilation errors.
+3.Code length is increased.	                3.Code length remains the same.
+4.Macros are faster in execution.	         4.Functions are a bit slower in execution.
+5.Macros are useful when a small piece of code 
+is used multiple times in a program.	         5.Functions are helpful when a large piece of code is repeated a number of times.
+
+

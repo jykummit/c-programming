@@ -1,0 +1,1584 @@
+BASIC C PROGRAMS ::
+1.Reverse a given number.
+program:
+#include <stdio.h>
+
+int main()
+{
+    int r,rev=0,n;
+    printf("enter n value");
+    scanf("%d",&n);
+    while(n!=0){
+        r=n%10;
+        rev=rev*10+r;
+        n=n/10;
+    }
+    printf("reverse number is %d\n",rev);
+
+    return 0;
+}
+
+2.check wheather the given number is palindrome or not?
+program:
+#include <stdio.h>
+
+int main()
+{
+    int r,rev=0,n,temp;
+    printf("enter n value");
+    scanf("%d",&n);
+    temp=n;
+    while(n!=0){
+        r=n%10;
+        rev=rev*10+r;
+        n=n/10;
+    }
+    if(temp==rev){
+        printf("palindrome number");
+    }
+   else{
+       printf("not palindrome number");
+   }
+
+    return 0;
+}
+
+3.check wheather the given number is armstrong or not?
+program:
+#include <stdio.h>
+
+int main()
+{
+    int r,sum=0,n,temp;
+    printf("enter n value");
+    scanf("%d",&n);
+    temp=n;
+    while(n!=0){
+        r=n%10;
+        sum=sum+(r*r*r);
+        n=n/10;
+    }
+    if(temp==sum){
+        printf("armstrong number");
+    }
+   else{
+       printf("not armstrong number");
+   }
+
+    return 0;
+}
+
+4.check how many digits are in given number.
+program:
+#include <stdio.h>
+
+int main()
+{
+    int sum=0,n;
+    printf("enter n value");
+    scanf("%d",&n);
+    while(n!=0){
+        n=n/10;
+        sum++;
+    }
+    printf("%d",sum);
+   
+
+    return 0;
+}
+
+5.total addition of given number.
+program:
+ #include <stdio.h>
+
+int main()
+{
+    int sum=0,n,r;
+    printf("enter n value");
+    scanf("%d",&n);
+    while(n!=0){
+        r=n%10;
+        sum=sum+r;
+        n=n/10;
+
+    }
+    printf("%d",sum);
+   
+
+    return 0;
+}
+
+6.whether the number is even or odd?
+program:
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    printf("enter n value");
+    scanf("%d",&n);
+   if(n%2==0){
+       printf("even");
+   }
+   else{
+       printf("odd");
+   }
+   
+
+    return 0;
+}
+
+7.whether the number is even or odd using bitwise operator?
+program:
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    printf("enter n value");
+    scanf("%d",&n);
+   if(n&0x01){
+       printf("odd");
+   }
+   else{
+       printf("even");
+   }
+
+    return 0;
+}
+
+8.whether the number is even or odd using goto operator?
+program:
+#include <stdio.h>
+
+void main()
+{
+    int n;
+    printf("enter n value");
+    scanf("%d",&n);
+   if(n%2==0)
+        goto even;
+    else
+        goto odd;
+    even:printf("even");
+    return;
+    odd:printf("odd");
+    return;
+}
+
+9.wap greatest among 2 numbers?
+program:
+
+#include <stdio.h>
+
+void main()
+{
+    int a,b;
+    printf("enter a and b values");
+    scanf("%d%d",&a,&b);
+    if(a>b){
+        printf("a is greater");
+    }
+    else{
+        printf("b is greater");
+    }
+}
+
+10.wap greatest among 3 numbers?
+program:
+#include <stdio.h>
+
+void main()
+{
+    int a,b,c;
+    printf("enter a,b and c values");
+    scanf("%d%d%d",&a,&b,&c);
+    if(a>b && a>c){
+        printf("a is greater");
+    }
+    else if(b>a && b>c){
+        printf("b is greater");
+    }
+    else{
+        printf("c is greater");
+    }
+}
+
+11.wap swap two numbers?
+program:
+#include <stdio.h>
+
+void main()
+{
+    int a,b,temp;
+    printf("enter a,b values");
+    scanf("%d%d",&a,&b);
+    printf("before swapping a=%d b=%d\n",a,b);
+    temp=a;
+    a=b;
+    b=temp;
+    printf("after swapping a=%d b=%d",a,b);
+   
+}
+
+12.wap swap two numbers without using third variable?
+program:
+#include <stdio.h>
+
+void main()
+{
+    int a,b;
+    printf("enter a,b values");
+    scanf("%d%d",&a,&b);
+    printf("before swapping a=%d b=%d\n",a,b);
+   a=a+b;
+   b=a-b;
+   a=a-b;
+    printf("after swapping a=%d b=%d",a,b);
+   
+}
+
+13.wap swap two numbers using bitwise operator?
+program:
+#include <stdio.h>
+
+void main()
+{
+    int a,b;
+    printf("enter a,b values");
+    scanf("%d%d",&a,&b);
+    printf("before swapping a=%d b=%d\n",a,b);
+   a=a^b;
+   b=a^b;
+   a=a^b;
+    printf("after swapping a=%d b=%d",a,b);
+   
+}
+
+14.wap to find fibonacci series?
+program:
+#include <stdio.h>
+
+void main()
+{
+    int f0=0,f1=1,f2,n;
+    printf("enter n value");
+    scanf("%d",&n);
+    for(int i=0;i<n;i++){
+        f2=f0+f1;
+        f0=f1;
+        f1=f2;
+         printf("%d ",f2);
+    }
+   
+   
+}
+
+15. wap to find perfect number?
+ans:
+
+#include<stdio.h>
+int main()
+{
+    int n,sum=0;
+    printf("enter n value\n");
+    scanf("%d",&n);
+    for(int i=1;i<n;++i){
+        if(n%i==0)
+        {
+            sum=sum+i;
+        }
+    }
+    if(sum==n){
+        printf("perfect number\n");
+    }
+    else{
+        printf("not perfect number\n");
+    }
+}
+*******************************************************
+wap to print 1 to n numbers
+
+program:
+#include<stdio.h>
+int main()
+{
+    int high,low;
+    printf("enter low value\n");
+    scanf("%d",&low);
+    printf("enter high value\n");
+    scanf("%d",&high);
+    for(int i=1;i<high;i++){
+        printf("%d ",i);
+    }
+    
+}
+
+**********************************8
+wap to convert decimal number to binary
+
+program:
+#include<stdio.h>
+int main()
+{
+  int n,i,a[10];
+  printf("enter number to be convert \n");
+  scanf("%d",&n);
+  for(i=0;n>0;i++){
+      a[i]=n%2;
+      n=n/2;
+      
+  }
+  printf("the binary number is : ");
+  for(i=i-1;i>=0;i--){
+    printf("%d",a[i]);
+  }
+  
+    
+}
+
+*********************************************
+wap to convert binary to decimal
+program:
+#include<stdio.h>
+int main()
+{
+  int binary,n,r,base=1,d=0;
+  printf("enter n value\n");
+  scanf("%d",&n);
+  binary=n;
+  while(n>0){
+      r=n%10;
+      d=d+r*base;
+      n=n/10;
+      base=base*2;
+  }
+  printf("the binary number is %d  \n",binary);
+  printf("the decimal number is %d  ",d);
+}
+
+*******************************************************
+wap to print prime number or not prime number?
+
+program:
+#include<stdio.h>
+int main()
+{
+  int n,r=0,flag=0;
+  printf("enter n value\n");
+  scanf("%d",&n);
+  r = n/2;
+  for(int i=2;i<=r;i++){
+      if(n%i == 0){
+           printf("not prime number\n");
+            flag = 1;
+           break;
+      }
+  }
+     
+    if(flag == 0){
+      printf("prime number\n");
+  }
+  
+  return 0;
+}
+
+************************************************
+wap to prime numbers between some range
+program:
+#include<stdio.h>
+int main()
+{
+  int i,j,count=0,low,high;
+  
+  printf("enter low value\n");
+  scanf("%d",&low);
+  printf("enter high value\n");
+  scanf("%d",&high);
+  for(i=low;i<=high;i++){
+      for(j=2;j<i;j++){
+          if(i%j == 0)
+          {
+              count++;
+              break;
+          }
+      }
+      if(count==0 && i!= 1)
+        printf("%d ",i);
+        count = 0;
+  }
+  
+  return 0;
+}
+STRING OPERATIONS
+
+15.wap string palindrome number?
+program:
+#include <stdio.h>
+#include<string.h>
+void main()
+{
+    int i,j;
+    char str[20],rev[20];
+    printf("enter string ");
+    scanf("%s",str);
+    for(i=strlen(str)-1,j=0;i>=0;i--,j++)
+    rev[j]=str[i];
+    rev[j]='\0';
+    printf("reverse string is %s\n",rev);
+    if(strcmp(str,rev)==0){
+        printf("string is palindrome");
+    }
+    else{
+        printf("string is not palindrome");
+    }
+   
+}
+
+STRING OPERATIONS
+
+16.wap to find string length?
+program:
+#include <stdio.h>
+#include<string.h>
+void main()
+{
+    
+    char str[20];
+    printf("enter string ");
+    scanf("%s",str);
+    int len=strlen(str);
+    printf("%d",len);
+   
+}
+
+17.wap to find string length without using strlen()?
+program:
+#include <stdio.h>
+#include<string.h>
+void main()
+{
+    int i,len=0;
+    char str[20];
+    printf("enter string ");
+    scanf("%s",str);
+    for(int i=0;i<str[i]!=0;i++){
+        len++;
+    }
+    printf("%d",len);
+   
+}
+***********************************************************************
+string reverse without strrev(),and strlen without strlen().
+
+#include <stdio.h>
+#include<string.h>
+
+int main()
+{
+    char s[10];
+    int i,len=0;
+    printf("enter a string\n");
+    scanf("%s",s);
+    for( i=0;i<s[i]!=0;i++){
+        len++;
+    }
+    printf("%d\n",len);
+    for(i=len-1;i>=0;i--){
+        printf("%c",s[i]);
+    }
+    return 0;
+}
+
+
+18. wap string reverse?
+program:
+#include <stdio.h>
+#include<string.h>
+void main()
+{
+    int i,len;
+    char str[20];
+    printf("enter string ");
+    scanf("%s",str);
+    len=strlen(str);
+    printf("%d\n",len);
+    printf("before reverse string %s\n",str);
+    for(i=len-1;i>=0;i--){
+        printf("%c",str[i]);
+    }
+    
+   
+}
+19.wap string concatenation?
+program:
+
+#include <stdio.h>
+#include<string.h>
+void main()
+{
+    //int i,len;
+    char str[20],str2[20];
+    printf("enter string ");
+    scanf("%s%s",str,str2);
+    strcat(str,str2);
+    printf("%s\n",str);
+    
+   
+}
+
+********************************************************************
+string concatenation without using strcat().
+
+#include <stdio.h>
+#include<string.h>
+
+int main()
+{
+    char s[10] = "jyothi";
+    char s1[15] = "mani";
+    int i,j;
+    for(i=0;s[i]!='\0';++i);
+    for(j=0;s1[j]!='\0';++j,++i){
+        s[i]=s1[j];
+    }
+    s[i]='\0';
+    printf("%s",s);
+    
+    return 0;
+}
+
+
+20.wap string copy with function?
+program:
+
+#include <stdio.h>
+#include<string.h>
+void main()
+{
+    char s1[20]="jyothi";
+    char s2[20];
+    strcpy(s2,s1);
+    printf("%s\n",s2);
+    
+   
+}
+
+21. wap string copy without function?
+program:
+
+#include <stdio.h>
+#include<string.h>
+void main()
+{
+    char s1[20]="jyothi";
+    char s2[20];
+    int i;
+    for(int i=0;s1[i]!=0;i++){
+        s2[i]=s1[i];
+    }
+    printf("%s",s2);
+    
+   
+}
+
+***************************************************
+wap to string palindrome
+ans:
+#include<stdio.h>
+#include<string.h>
+
+int main(){
+    char s[20];
+    printf("enter string \n");
+    scanf("%s",s);
+    int c,i=0,j=strlen(s)-1;
+    while(i<j)
+    {
+        if(s[i] != s[j])
+        {
+            c=1;
+            break;
+        }
+        else{
+            c=0;
+        }
+         i++;
+         j--;
+    }
+    if(c==0){
+        printf("palindrome\n");
+    }
+    else{
+        printf("not palindrome\n");
+    }
+   
+  
+}
+
+22.wap to find factorial of a given number?
+program:
+#include<stdio.h>
+
+int main()
+{
+    int fact=1,n,i;
+    printf("enter n value");
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++){
+        fact=fact*i;
+    }
+    printf("%d",fact);
+}
+
+********************************************************
+wap factorial using recursion?
+ans:
+
+#include<stdio.h>
+int fact(int n){
+    if(n==0){
+        return 1;
+    }
+    else{
+        return n*fact(n-1);
+    }
+}
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    printf("%d ",fact(n));
+}
+23. Print "hello" without using semicolon?
+program:
+#include<stdio.h>
+
+int main()
+{
+   if(printf("hello world")){
+       
+   }
+}
+
+24.wap without main program?
+#include<stdio.h>
+#define start main
+void start()
+{
+   printf("hello world");
+       
+   
+}
+
+25. wap wheather the given number is positive or negative?
+program:
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("enter n value");
+    scanf("%d",&n);
+    if(n>0){
+        printf("positive");
+    }
+    else{
+        printf("negative");
+    }
+}
+
+26.wap of sum of first n natural numbers?
+program:
+
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("enter n value");
+    scanf("%d",&n);
+   int sum= (n*(n+1)/2);
+   printf("%d",sum);
+}
+
+27.wap to check wheather the given year is leap or not?
+program:
+#include<stdio.h>
+int main()
+{
+    int n;
+    printf("enter n value");
+    scanf("%d",&n);
+   if(n%4 == 0){
+       printf("leap year");
+   }
+   else{
+       printf("not leap year");
+   }
+}
+
+28.wap to print multiplication table?
+program:
+
+#include<stdio.h>
+int main()
+{
+    int n,i;
+    printf("enter n value");
+    scanf("%d",&n);
+    for(i=1;i<=10;i++){
+    printf("%d*%d=%d\n",n,i,n*i);
+    }
+}
+
+Character programs
+
+29.wap to display characters from a to z?
+program:
+
+#include<stdio.h>
+int main()
+{
+    char ch;
+    int i;
+    for(ch='a';ch<='z';ch++){
+        printf("%c ",ch);
+    }
+    
+}
+
+30. wap to display characters from given range?
+program:
+
+#include<stdio.h>
+int main()
+{
+    char ch;
+    int i;
+    for(ch='h';ch<='t';ch++){
+        printf("%c ",ch);
+    }
+    
+}
+
+31.wap to find given charcater is vowel or constant?
+program:
+
+#include<stdio.h>
+int main()
+{
+    char ch;
+    int i;
+    printf("enter character\n");
+    scanf("%s",&ch);
+    if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u' || ch=='A' || ch=='E' || ch=='I' || ch=='O' || ch=='U' ){
+        printf("vowel");
+    }
+    else{
+        printf("constant");
+    }
+    
+}
+
+32.wap to find ascii values for alphabets?
+program:
+
+#include<stdio.h>
+int main()
+{
+    char ch;
+    printf("enter character\n");
+    scanf("%s",&ch);
+    printf("ascii value %c=%d",ch,ch);
+    
+}
+
+33.wap power of a number?
+program:
+
+#include<stdio.h>
+#include<math.h>
+
+int main()
+{
+   int base,n;
+   printf("enter base and n value");
+   scanf("%d%d",&base,&n);
+   int r=pow(base,n);
+   printf("%d",r);
+    
+}
+
+ARRAY PROGRAMS
+
+34.wap ascending order sorting of array elements?
+program:
+#include<stdio.h>
+int main()
+{
+    int n,i,j,a[20],temp;
+    printf("enter n value");
+    scanf("%d",&n);
+    printf("enter array elements");
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    for(i=0;i<n-1;i++){
+        for(j=0;j<=i;j++){
+            if(a[i]<a[j]){
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+    printf("ascending order is ");
+    for(j=0;j<n;j++)
+    printf("%d ",a[j]);
+    
+}
+
+
+35.wap sorting on descending order of array elements?
+program:
+
+#include<stdio.h>
+int main()
+{
+    int n,i,j,a[20],temp;
+    printf("enter n value");
+    scanf("%d",&n);
+    printf("enter array elements");
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    for(i=0;i<n-1;i++){
+        for(j=0;j<=i;j++){
+            if(a[i]>a[j]){
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+    printf("ascending order is ");
+    for(j=0;j<n;j++)
+    printf("%d ",a[j]);
+    
+}
+
+36.wap to find largest element in given array?
+program:
+#include<stdio.h>
+int main()
+{
+    int n,i,a[20],temp;
+    printf("enter n value");
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+    printf("enter array elements",i+1);
+    
+    scanf("%d",&a[i]);
+    }
+   for(i=1;i<n;i++){
+       if(a[0]<a[i]){
+           a[0]=a[i];
+       }
+   }
+    printf("largest element in array ");
+
+    printf("%d ",a[0]);
+    
+}
+
+37.wap to factors of given number?
+program:
+
+#include<stdio.h>
+int main()
+{
+    int n,i;
+    printf("enter n value");
+    scanf("%d",&n);
+    for(i=1;i<=n/2;i++){
+        if(n%i==0)
+        printf(" %d",i);
+    }
+}
+
+BItwise operators
+
+38.wap to set,clear and toggle bit.
+program:
+#include <stdio.h>
+
+int main()
+{
+    int n,p,r,r1,r2;
+    printf("enter n value");
+    scanf("%d",&n);
+    printf("enter position");
+    scanf("%d",&p);
+    r= n | (1<<p);
+    r1=n &~ (1<<p);
+    r2=n ^ (1<<p);
+    printf("%d ",r);
+    printf("%d ",r1);
+    printf("%d ",r2);
+
+    return 0;
+}
+
+39.wap swap two nibbles.
+program:
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    printf("enter n value");
+    scanf("%d",&n);
+    int r = ((n&0x0f)<<4 | (n&0xf0)>>4);
+    printf("%d",r);
+
+    return 0;
+}
+
+40.wap to shift operators?
+program:
+#include <stdio.h>
+
+int main()
+{
+    int n,p;
+    printf("enter n value");
+    scanf("%d",&n);
+    printf("enter position");
+    scanf("%d",&p);
+    int r=n>>p;
+    int r1=n<<p;
+    printf("%d ",r);
+    printf("%d ",r1);
+   
+
+    return 0;
+}
+
+41.wap to bitwise operators?
+program:
+
+#include <stdio.h>
+
+int main()
+{
+    int a,b;
+    printf("enter a and b value");
+    scanf("%d%d",&a,&b);
+   printf("%d ",a|b);
+   printf("%d ",a&b);
+   printf("%d ",a^b);
+   
+
+    return 0;
+}
+
+42.wap to compliment a number?
+program:
+
+#include <stdio.h>
+
+int main()
+{
+    int a;
+    printf("enter a value");
+    scanf("%d",&a);
+   printf("%d ",~a);
+ 
+   
+
+    return 0;
+}
+
+43.wap to little endian and big endian?
+program:
+
+#include <stdio.h>
+int main()
+{
+   unsigned int i = 0x01234;
+   char *c = (char*)&i;
+   if (*c)   
+       printf("Little endian");
+   else
+       printf("Big endian");
+   getchar();
+   return 0;
+}
+
+
+
+
+
+
+
+44.wap to create ,add and delete linkedlist elements?
+program:
+
+NODE INSERT AT STARTING
+
+void insertbegin(int data){
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=data;
+    newnode->link=head;
+    head=newnode;
+}
+
+NODE INSERT AT END OF LINKEDLIST
+
+void insertend(int data){
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=data;
+    newnode->link=NULL;
+    if(head==NULL){
+        head=newnode;
+    }
+    else{
+        temp=head;
+        while(temp->link != NULL){
+            temp=temp->link;
+            
+        }
+        temp->link=newnode;
+    }
+}
+
+NODE INSERT AT POSITION
+
+void insertpos(int pos,int data){
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    struct node *temp=head;
+    newnode->data=data;
+    pos--;
+    for(int i=1;i<pos;i--){
+        temp=temp->link;
+    }
+    newnode->link=temp->link;
+    temp->link=newnode;
+}
+
+DELETE NODE AT STARTING
+
+void deletestart(){
+    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+    if(head==NULL)
+        printf("list is empty");
+    else{
+        head=head->link;
+        free(newnode);
+    }
+}
+
+DELETE NODE AT ENDING
+void deletend(){
+    struct node *temp=head;
+    struct node *temp1;
+    while(temp->link !=NULL){
+        temp1=temp;
+        temp=temp->link;
+    }
+    temp1->link=NULL;
+}
+
+DELETE NODE AT POSITION
+
+void deletepos(int pos){
+    struct node *temp=head;
+    struct node *temp2;
+    pos--;
+    for(int i=1;i<pos;i--){
+        temp=temp->link;
+    }
+    temp2=temp->link;
+    temp->link=temp2->link;
+    temp2->link=NULL;
+    free(temp2);
+}
+
+REMOVE DUPLICATES IN LINKEDLIST:
+
+void removeDuplicate() {  
+    //Node current will point to head  
+    struct node *current = head, *index = NULL, *temp = NULL;  
+      
+    if(head == NULL) {  
+        return;  
+    }  
+    else {  
+        while(current != NULL){  
+            //Node temp will point to previous node to index.  
+            temp = current;  
+            //Index will point to node next to current  
+            index = current->next;  
+              
+            while(index != NULL) {  
+                //If current node's data is equal to index node's data  
+                if(current->data == index->data) {  
+                    //Here, index node is pointing to the node which is duplicate of current node  
+                    //Skips the duplicate node by pointing to next node  
+                    temp->next = index->next;  
+                }  
+                else {  
+                    //Temp will point to previous node of index.  
+                    temp = index;  
+                }  
+                index = index->next;  
+            }  
+            current = current->next;  
+        }          
+    }  
+}  
+CREATING NODE IN LINKEDLIST
+
+#include <stdio.h>
+#include<stdlib.h>
+
+struct node{
+    int data;
+    struct node *link;
+};
+
+struct node *head,*temp,*newnode;
+
+void create(){
+    int choice;
+    while(choice){
+        struct node *newnode=(struct node *)malloc(sizeof(struct node));
+        printf("enter data");
+        scanf("%d",&newnode->data);
+        if(head==NULL)
+            head=temp=newnode;
+        else{
+            temp->link=newnode;
+            temp=newnode;
+        }
+         printf("Do you want to continue(0,1)?");
+        scanf("%d",&choice);
+    }
+   
+}
+
+
+void print(){
+    temp=head;
+    if(head==NULL){
+        printf("list is empty");
+    }
+    else{
+        while(temp != NULL){
+            printf("%d->",temp->data);
+            temp=temp->link;
+        }
+    }
+    printf("NULL\n");
+}
+
+int main(){
+    printf("linkedlist creation\n");
+    create();
+    print();
+    
+    return 0;
+}
+
+REVERSE linkedlist
+
+void reverse(){
+    struct node *curr,*next,*prev;
+    prev=NULL;
+    curr=next=head;
+    while(next != NULL){
+        next=next->link;
+
+        curr->link=prev;
+        prev=curr;
+        curr=next;
+        
+    }
+    head=prev;
+}
+
+LENGTH OF LINKEDLIST
+void length(){
+    struct  node *temp;
+    temp=head;
+    int count=0;
+    while(temp!=NULL){
+        count++;
+        temp=temp->link;
+    }
+    printf("length of %d\n",count);
+}
+
+STRUCTURES
+
+1.structure padding with pragma pack for removing cpu cycles
+#include <stdio.h>
+#include<stdlib.h>
+#pragma pack(1)
+
+struct node{
+    int c;
+    char b;
+    char a;
+};
+
+int main(){
+    printf("size: %ld",sizeof( struct node));
+}
+
+output:6
+
+2.without pragma struture size id different
+#include <stdio.h>
+#include<stdlib.h>
+//#pragma pack(1)
+
+struct node{
+    int c;
+    char b;
+    char a;
+};
+
+int main(){
+    printf("size: %ld",sizeof( struct node));
+}
+
+output:8
+
+
+*****************************************************************
+1. How can a number be converted to a string?
+ans: 	sprintf(char *str, const char *format, ...)
+program:
+
+#include<stdio.h>
+#include <math.h>
+int main()
+{
+char str[80];
+sprintf(str, "The value of PI = %f", M_PI);
+puts(str);
+return 0;
+}
+
+2. How can a string be converted to a number?
+ans: atoi(const char *string)
+
+program:
+
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+int main()
+{
+    int val;
+   char str[50] = "90jyothi";
+   val=atoi(str);
+   printf("%d\n",val);
+   printf("%s\n",str);
+   return 0;
+}
+
+
+STACK & QUEUE
+1. 1. What is Stack in C?
+A stack in C is nothing but a linear data structure that follows the LIFO rule (Last In First Out). 
+In a stack, both insertion and deletion take place from just one end, that is, from the top.
+
+INSERTION using push():
+
+#define LIMIT 100
+void push()
+{
+int stack[LIMIT], top, element;
+if(top == LIMIT- 1)
+{
+printf("Stack Overflow\n");
+}
+else
+{
+printf("Enter the element to be inserted:");
+scanf("%d", &element);
+top++;
+stack[top]=element;
+}
+}
+
+
+DELETION using pop():
+
+#define LIMIT 100
+void pop()
+{
+int stack[LIMIT], top, element;
+if(top == -1)
+{
+printf("Stack underflow\n");
+}
+else
+{
+element=stack[top];
+printf("The deleted item is %d\n",stack[top]);
+top--; // The element below the topmost element is deleted
+}
+}
+
+DISPLAY operation:
+
+#define LIMIT 100
+void display()
+{
+int stack[LIMIT], top, i;
+if(top == -1)
+{
+printf("Stack underflow\n"); // Stack is empty
+}
+else if(top > 0)
+{
+printf("The elements of the stack are:\n");
+for(i = top; i >= 0; i--) // top to bottom traversal
+{
+printf("%d\n",stack[i]);
+}
+}
+}
+
+ARRAY IMPLEMENTATION OF STACK 
+
+#include <stdio.h>
+#include <stdlib.h>
+#define LIMIT 100 // Specifying the maximum limit of the stack
+/* Global declaration of variables */
+int stack[LIMIT]; // Array implementation of stack
+int top; // To insert and delete the data elements in the stack
+int i; // To traverse the loop to while displaying the stack
+int choice; // To choose either of the 3 stack operations
+void push(); // Function used to insert the element into the stack
+void pop(); // Function used to delete the element from the stack
+void display(); // Function used to display all the elements in the stack according to LIFO rule
+int main()
+{
+printf("Welcome to DataFlair tutorials!\n\n");
+printf ("ARRAY IMPLEMENTATION USING STACKS\n\n");
+top = -1; // Initializing top to -1 indicates that it is empty
+do
+{
+printf("1. Insert\n2. Delete\n3. Display\n4. Exit\n\n");
+printf("Enter your choice:");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:
+push();
+break;
+case 2:
+pop();
+break;
+case 3:
+display();
+break;
+case 4:
+exit(0);
+break;
+default:
+printf("Sorry, invalid choice!\n");
+break;
+}
+} while(choice!=4);
+return 0;
+}
+void push()
+{
+int element;
+if(top == LIMIT- 1)
+{
+printf("Stack underflow\n");
+}
+else
+{
+printf("Enter the element to be inserted:");
+scanf("%d", &element);
+top++;
+stack[top]=element;
+}
+}
+void pop()
+{
+int element;
+if(top == -1)
+{
+printf("Stack underflow\n");
+}
+else
+{
+element=stack[top];
+printf("The deleted item is %d\n",stack[top]);
+top--; // The element below the topmost element is deleted
+}
+}
+void display()
+{
+if(top == -1)
+{
+printf("Stack underflow\n"); // Stack is empty
+}
+else if(top > 0)
+{
+printf("The elements of the stack are:\n");
+for(i = top; i >= 0; i--) // top to bottom traversal
+{
+printf("%d\n",stack[i]);
+}
+}
+}
+
+2.what is queue?
+In contrast to a stack, a queue in C is nothing but a linear data structure that follows the FIFO rule (First In First Out). 
+Insertion is done from the back (the rear end) and deletion is done from the front.
+
+INSERTION:
+
+void insert()
+{
+int element;
+if (rear == LIMIT - 1)
+printf("Queue Overflow\n");
+else
+{
+if (front == - 1)
+front = 0;
+printf("Enter the element to be inserted in the queue: ");
+scanf("%d", &element);
+rear++;
+queue[rear] = element;
+}
+}
+
+DELETION:
+
+void delet()
+{
+if (front == - 1 || front > rear)
+{
+printf("Queue Underflow \n");
+}
+else
+{
+printf("The deleted element in the queue is: %d\n", queue[front]);
+front++;
+}
+}
+
+DISPLAY:
+
+void display()
+{
+int i;
+if (front == - 1)
+{
+printf("Queue underflow\n");
+}
+else
+{
+printf("The elements of the queue are:\n");
+for (i = front; i <= rear; i++)
+printf("%d\n", queue[i]);
+}
+}
+
+ARRAY IMPLEMENTATION USING QUEUE:
+
+#include <stdio.h>
+#include <stdlib.h>
+#define LIMIT 100 // Specifying the maximum limit of the queue
+/* Global declaration of variables */
+int queue[LIMIT]; // Array implementation of queue
+int front, rear; // To insert and delete the data elements in the queue respectively
+int i; // To traverse the loop to while displaying the stack
+int choice; // To choose either of the 3 stack operations
+void insert(); // Function used to insert the element into the queue
+void delet(); // Function used to delete the elememt from the queue
+void display(); // Function used to display all the elements in the queue according to FIFO rule
+int main()
+{
+printf("Welcome to DataFlair tutorials!\n\n");
+printf ("ARRAY IMPLEMENTATION OF QUEUES\n\n");
+front = rear = -1; // Initialzing front and rear to -1 indicates that it is empty
+do
+{
+printf("1. Insert\n2. Delete\n3. Display\n4. Exit\n\n");
+printf("Enter your choice:");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:
+insert();
+break;
+case 2:
+delet();
+break;
+case 3:
+display();
+break;
+case 4:
+exit(0);
+break;
+default:
+printf("Sorry, invalid choice!\n");
+break;
+}
+} while(choice!=4);
+return 0;
+}
+void insert()
+{
+int element;
+if (rear == LIMIT - 1)
+printf("Queue Overflow\n");
+else
+{
+if (front == - 1)
+front = 0;
+printf("Enter the element to be inserted in the queue: ");
+scanf("%d", &element);
+rear++;
+queue[rear] = element;
+}
+}
+void delet()
+{
+if (front == - 1 || front > rear)
+{
+printf("Queue Underflow \n");
+}
+else
+{
+printf("The deleted element in the queue is: %d\n", queue[front]);
+front++;
+}
+}
+void display()
+{
+int i;
+if (front == - 1)
+{
+printf("Queue underflow\n");
+}
+else
+{
+printf("The elements of the queue are:\n");
+for (i = front; i <= rear; i++)
+printf("%d\n", queue[i]);
+}
+}
+
+
